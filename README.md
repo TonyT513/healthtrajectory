@@ -55,22 +55,24 @@ React · TypeScript · Vite · React Router
 | [`capstone/`](capstone/) | The web app ([technical README](capstone/README.md)) |
 | [`capstone/src/lib/analysis.ts`](capstone/src/lib/analysis.ts) | How status and trends are calculated |
 | [`capstone/docs/reference-ranges.md`](capstone/docs/reference-ranges.md) | Sources for typical ranges |
-| [`docs/team/`](docs/team/) | Each team member's personal workflow guide |
+| [`team/`](team/) | A folder for each team member: their personal guide (`README.md`) and their journal (`journal.md`) |
 
 ## Team
 
 Capstone Team B. Everyone works on **their own branch** and moves finished work into `main` with a pull request.
 
-| Member | Your branch | Your personal guide |
+| Member | Your branch | Your folder (guide + journal) |
 |---|---|---|
-| Tony | `tony-branch` | [docs/team/tony.md](docs/team/tony.md) |
-| Jared | `jared-branch` | [docs/team/jared.md](docs/team/jared.md) |
-| Rob | `rob-branch` | [docs/team/rob.md](docs/team/rob.md) |
-| Carlos | `carlos-branch` | [docs/team/carlos.md](docs/team/carlos.md) |
+| Tony | `tony-branch` | [`team/Tony/`](team/Tony/) |
+| Jared | `jared-branch` | [`team/Jared/`](team/Jared/) |
+| Rob | `rob-branch` | [`team/Rob/`](team/Rob/) |
+| Carlos | `carlos-branch` | [`team/Carlos/`](team/Carlos/) |
+
+Each person's folder has a **`README.md`** (your personal step-by-step guide, with your branch filled in) and a **`journal.md`** where you can log what you worked on. Only edit files in **your own** folder, so nobody's journal ever conflicts with anyone else's. You can add more files there too (notes, screenshots, research).
 
 > 🔒 **`main` is protected.** Teammates can't push to it directly, and everyone (Tony included) moves work into `main` through a pull request. This stops anyone from accidentally overwriting someone else's work.
 
-> ⚠️ **Read [What NOT to commit](#what-not-to-commit) before your first commit.** This repo is **public**: anything you push can be seen by anyone on the internet, and it stays in the history even after you delete it.
+> ⚠️ **Read the [Dos and don'ts](#dos-and-donts) before your first commit.** This repo is **public**: anything you push can be seen by anyone on the internet, and it stays in the history even after you delete it.
 
 ---
 
@@ -162,7 +164,7 @@ carlos-branch ──┘
    ```
    This brings everything new from `main` into your branch. If it opens an editor with a message, just close that tab.
 3. **Make your changes** and save (**Cmd + S**). Test them in the app (Part 3).
-4. **Commit.** Click the **Source Control** icon on the left (three dots joined by lines). **Look at the list of changed files first** and make sure every file belongs there (see [What NOT to commit](#what-not-to-commit)). Type a short message like `Add sleep goal to Goals page` and click **✓ Commit**.
+4. **Commit.** Click the **Source Control** icon on the left (three dots joined by lines). **Look at the list of changed files first** and make sure every file belongs there (see [Dos and don'ts](#dos-and-donts)). Type a short message like `Add sleep goal to Goals page` and click **✓ Commit**.
    - If it asks *"There are no staged changes… stage all your changes?"*, click **Yes**.
 5. **Push.** Click **Sync Changes** (or **Publish Branch** the first time). Your work is now backed up on GitHub, on your branch only.
 
@@ -200,13 +202,29 @@ git push                              # send it to YOUR branch on GitHub
 - **Commit small and often**, and merge into `main` when a feature works, not once a month.
 - **Test before you open a PR**: the app should start with `npm run dev` and the page you changed should work.
 
-### What NOT to commit
+### Dos and don'ts
 
 > ⚠️ **Read this before your first commit.**
 
 This repository is **public**. Everything you push can be seen by anyone, and **deleting a file later does not remove it**: it stays in the Git history forever. Before every commit, read the list of changed files in Source Control.
 
-**Never commit:**
+**✅ Do:**
+
+| ✅ Do | Why |
+|---|---|
+| **Work on your own branch** (`yourname-branch`) | You can save and push as often as you like without affecting anyone else. |
+| **Run `git pull origin main` at the start of every session** | Your branch gets everyone's latest work, so you build on the current code and avoid big conflicts later. |
+| **Read the list of changed files before every commit** | It's your last chance to catch a file that shouldn't be there, like a password or a stray test file. |
+| **Write clear commit messages** (e.g. `Add sleep goal to Goals page`) | The team, your instructor and future you can see what changed and why, and find it quickly. |
+| **Commit small and often** | Small commits are easy to understand and easy to undo if something goes wrong. |
+| **Test before opening a pull request** (`npm run dev`, check your page) | Whatever reaches `main` is what everyone gets. Broken code there breaks it for the whole team. |
+| **Check "Files changed" on your pull request** | Confirms you're only adding what you meant to, before it joins the official copy. |
+| **Say in the group chat what you're working on** | Two people editing the same file at the same time is the #1 cause of conflicts. |
+| **Use only made-up example data** (the app's **Load example data**) | Keeps real people's private health information out of a public repo. |
+| **Keep personal notes in your own folder** (`team/YourName/`) | Your journal and notes never clash with anyone else's files. |
+| **Ask when you're unsure** | A 2-minute question is faster than untangling lost work. |
+
+**❌ Never commit:**
 
 | ❌ Don't commit | Why |
 |---|---|
@@ -218,7 +236,7 @@ This repository is **public**. Everything you push can be seen by anyone, and **
 | **System junk**: `.DS_Store`, `__MACOSX/`, `Thumbs.db` | Clutter from Mac/Windows. (Already blocked by `.gitignore`.) |
 | **Code, images or text you don't have the right to use** | Copyright. Note the source of anything you borrow. |
 
-**Never do:**
+**❌ Never do:**
 
 | ❌ Don't | Why |
 |---|---|
@@ -227,7 +245,7 @@ This repository is **public**. Everything you push can be seen by anyone, and **
 | Delete someone else's branch, or your own after merging | Branches are each person's workspace. |
 | Merge a PR with conflicts you don't understand | You might throw away a teammate's work. Ask first. |
 | Commit code that doesn't run | It breaks the app for everyone once it reaches `main`. |
-| Change a teammate's files without telling them | Leads to conflicts and lost work. |
+| Edit files in someone else's `team/` folder, or change their code without telling them | Leads to conflicts and lost work. |
 
 > 🚨 **Committed something by mistake (a password, key or real data)?** Tell Tony **right away**, even if you already deleted it. Then **change that password or cancel that key immediately**, because it stays visible in the history. Don't try to fix it with force pushes.
 

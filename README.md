@@ -55,16 +55,28 @@ React · TypeScript · Vite · React Router
 | [`capstone/`](capstone/) | The web app ([technical README](capstone/README.md)) |
 | [`capstone/src/lib/analysis.ts`](capstone/src/lib/analysis.ts) | How status and trends are calculated |
 | [`capstone/docs/reference-ranges.md`](capstone/docs/reference-ranges.md) | Sources for typical ranges |
+| [`docs/team/`](docs/team/) | Each team member's personal workflow guide |
 
 ## Team
 
-Capstone Team B: **Tony, Jared, Rob, Carlos**
+Capstone Team B. Everyone works on **their own branch** and moves finished work into `main` with a pull request.
+
+| Member | Your branch | Your personal guide |
+|---|---|---|
+| Tony | `tony-branch` | [docs/team/tony.md](docs/team/tony.md) |
+| Jared | `jared-branch` | [docs/team/jared.md](docs/team/jared.md) |
+| Rob | `rob-branch` | [docs/team/rob.md](docs/team/rob.md) |
+| Carlos | `carlos-branch` | [docs/team/carlos.md](docs/team/carlos.md) |
+
+> 🔒 **`main` is protected.** Nobody (Tony included) can push to it directly. Changes reach `main` only through a pull request. This stops anyone from accidentally overwriting someone else's work.
+
+> ⚠️ **Read [What NOT to commit](#what-not-to-commit) before your first commit.** This repo is **public**: anything you push can be seen by anyone on the internet, and it stays in the history even after you delete it.
 
 ---
 
 ## Beginner's guide (Visual Studio Code)
 
-Never used Git, GitHub or VS Code before? Start here. You only do **Part 1** and **Part 2** once. **Part 3** and **Part 4** are what you do every time you work on the project.
+Never used Git, GitHub or VS Code before? Start here. You only do **Part 1** and **Part 2** once. **Part 3** and **Part 4** are what you do every time you work on the project. Your [personal guide](#team) has the same steps with your branch name filled in.
 
 > **Mac or Windows?** Where this guide says **Cmd**, Windows users press **Ctrl**. Where it says **Option**, Windows users press **Alt**.
 
@@ -80,7 +92,7 @@ Never used Git, GitHub or VS Code before? Start here. You only do **Part 1** and
 
 > **Tony — adding a teammate:** on GitHub, open this repo → **Settings** → **Collaborators** → **Add people** → type their username. They'll get an email invite they have to **accept**.
 
-**Tell Git who you are** (one time). In VS Code, open the menu **Terminal → New Terminal**. Type these two lines, pressing Enter after each, with your own name and email:
+**Tell Git who you are** (one time). In VS Code, open the menu **Terminal → New Terminal**. Type these four lines, pressing Enter after each. Put your own name, and the **same email you used for GitHub**, in the first two:
 
 ```bash
 git config --global user.name "Your Name"
@@ -103,6 +115,8 @@ The last two lines prevent two confusing messages later (see Troubleshooting). N
 
 You should now see `capstone`, `docs` and `README.md` in the **Explorer** panel on the left.
 
+**Switch to your own branch (one time).** Look at the **bottom-left corner** of VS Code; it says `main`. Click it. In the list that opens at the top, choose **`origin/yourname-branch`** (e.g. `origin/carlos-branch`). The bottom-left now shows your branch name. ✅ From now on, VS Code remembers it.
+
 ### Part 3: Run the app
 
 1. Open a terminal: **Terminal → New Terminal**. It appears at the bottom of VS Code.
@@ -124,41 +138,98 @@ You should now see `capstone`, `docs` and `README.md` in the **Explorer** panel 
 
 Next time, you only need `cd capstone` and `npm run dev`.
 
-### Part 4: Your everyday routine — pull, change, commit, push
+### Part 4: Your everyday routine (your branch → pull request → `main`)
 
-Think of GitHub as the team's shared copy. **Pull** = get everyone else's latest changes. **Commit** = save a snapshot of your changes on your computer. **Push** = send your snapshots up to GitHub so the team gets them.
+How the team works:
 
-**The golden rule: always pull before you start working, and pull again right before you push.**
-
-#### Using buttons (easiest)
-
-1. **Pull first.** Click the **Source Control** icon on the left sidebar (it looks like a branch: three dots connected by lines). Click the **⋯** menu at the top of the panel → **Pull**.
-2. **Make your changes** and save the files (**Cmd + S**). Changed files appear under **Changes** in the Source Control panel. Click a file there to see exactly what you changed.
-3. **Commit.** Type a short message in the box at the top describing what you did, such as `Add sleep goal to Goals page`, then click **✓ Commit**.
-   - If it asks *"There are no staged changes. Would you like to stage all your changes and commit them directly?"*, click **Yes** (or **Always**).
-4. **Push.** Click **Sync Changes** (it shows arrows and numbers). This pulls anything new, then pushes your commit. If asked, click **OK**.
-5. Check [the repo on GitHub](https://github.com/TonyT513/healthtrajectory); your commit message should appear near the top.
-
-#### Using the terminal (same thing, typed)
-
-```bash
-git pull                                  # 1. get the latest changes
-# ... edit and save your files ...
-git status                                # see which files you changed
-git add .                                 # 2. include all your changes
-git commit -m "Describe what you changed" # 3. save a snapshot
-git pull                                  # 4. get anything new from teammates
-git push                                  # 5. send it to GitHub
+```
+tony-branch   ──┐
+jared-branch  ──┤
+rob-branch    ──┼──→  Pull request  →  Merge  →  main  (the team's official copy)
+carlos-branch ──┘
 ```
 
-Run these from the project folder (`healthtrajectory`). If your terminal is inside `capstone`, Git commands still work.
+- **`main`** = the team's official copy. **Never work on it directly** (GitHub will block you anyway).
+- **`yourname-branch`** = your personal workspace. Push to it as often as you like; you can't break anyone else's work there.
+- **Pull request (PR)** = how you move finished work from your branch into `main`. It shows exactly what you changed.
+
+#### Every time you sit down to work
+
+1. **Check the bottom-left of VS Code says your branch** (e.g. `carlos-branch`). If it says `main`, click it and pick your branch.
+2. **Get the team's latest work into your branch.** Open the terminal and run:
+   ```bash
+   git pull origin main
+   ```
+   This brings everything new from `main` into your branch. If it opens an editor with a message, just close that tab.
+3. **Make your changes** and save (**Cmd + S**). Test them in the app (Part 3).
+4. **Commit.** Click the **Source Control** icon on the left (three dots joined by lines). **Look at the list of changed files first** and make sure every file belongs there (see [What NOT to commit](#what-not-to-commit)). Type a short message like `Add sleep goal to Goals page` and click **✓ Commit**.
+   - If it asks *"There are no staged changes… stage all your changes?"*, click **Yes**.
+5. **Push.** Click **Sync Changes** (or **Publish Branch** the first time). Your work is now backed up on GitHub, on your branch only.
+
+Repeat steps 3–5 as often as you like. Small, frequent commits are best.
+
+#### When a piece of work is finished: open a pull request
+
+1. Do steps 2 and 5 above once more, so your branch has the latest `main` and everything is pushed.
+2. Go to [the repo on GitHub](https://github.com/TonyT513/healthtrajectory). Click the yellow **Compare & pull request** banner.
+   *No banner?* Click the **Pull requests** tab → **New pull request** → set **base: `main`** and **compare: `yourname-branch`**.
+3. Give it a clear title (e.g. *Goals page: add sleep goal*) and a sentence about what changed. Click **Create pull request**.
+4. Look at the **Files changed** tab. Is everything there something you meant to change? If not, fix it on your branch and push again; the PR updates itself.
+5. If GitHub says **"This branch has no conflicts with the base branch"**, click **Merge pull request** → **Confirm merge**. 🎉 Your work is in `main`.
+   - If it says there are **conflicts**, don't guess. Ask the teammate who changed the same file, or ask Tony.
+6. ❗ GitHub then offers a **Delete branch** button. **Don't click it.** Your branch is your permanent workspace. (If it was deleted by accident, Tony can restore it from the closed pull request.)
+7. Tell the team in the group chat: "Merged my PR, please run `git pull origin main`."
+
+#### The same thing using only the terminal
+
+```bash
+git switch yourname-branch            # make sure you're on your branch
+git pull origin main                  # get the team's latest work
+# ... edit, save and test ...
+git status                            # check which files changed (read the list!)
+git add .                             # include your changes
+git commit -m "Describe what you changed"
+git push                              # send it to YOUR branch on GitHub
+# then open the pull request on github.com (steps above)
+```
 
 #### Team tips
 
-- **Tell the team what you're working on** so two people don't edit the same file at the same time. That's the main cause of conflicts.
-- **Commit small and often.** One feature or fix per commit is easier to understand and to undo.
-- **Never commit** passwords, API keys or real health information. The repo is public.
-- **Don't commit `node_modules`.** It's already ignored by `.gitignore`, so you don't need to do anything.
+- **Say what you're working on** in the group chat so two people don't change the same file at once. That's the main cause of conflicts.
+- **Run `git pull origin main` at the start of every session**, so your branch never falls far behind.
+- **Commit small and often**, and merge into `main` when a feature works, not once a month.
+- **Test before you open a PR**: the app should start with `npm run dev` and the page you changed should work.
+
+### What NOT to commit
+
+> ⚠️ **Read this before your first commit.**
+
+This repository is **public**. Everything you push can be seen by anyone, and **deleting a file later does not remove it**: it stays in the Git history forever. Before every commit, read the list of changed files in Source Control.
+
+**Never commit:**
+
+| ❌ Don't commit | Why |
+|---|---|
+| **Passwords, API keys, tokens, connection strings**, or any `.env` file | Anyone can copy and misuse them. Bots scan GitHub for keys within minutes. |
+| **Real health information**: anyone's real lab results, medications, diagnoses, or screenshots of real data | Private medical information. Use only the app's **made-up example data**. |
+| **Personal information**: SSNs, student IDs, home addresses, phone numbers, birthdates | Public forever, even after deletion. |
+| **`node_modules/`, `dist/`** | Huge, and anyone can recreate them with `npm install` / `npm run build`. (Already blocked by `.gitignore`.) |
+| **Big files** (videos, `.zip` files, anything over ~10 MB) | Slows down everyone's clone. GitHub rejects files over 100 MB. |
+| **System junk**: `.DS_Store`, `__MACOSX/`, `Thumbs.db` | Clutter from Mac/Windows. (Already blocked by `.gitignore`.) |
+| **Code, images or text you don't have the right to use** | Copyright. Note the source of anything you borrow. |
+
+**Never do:**
+
+| ❌ Don't | Why |
+|---|---|
+| Work directly on `main` | It's the team's official copy. Use your own branch. |
+| Use `git push --force` (or "Force Push") | It can erase other people's work. |
+| Delete someone else's branch, or your own after merging | Branches are each person's workspace. |
+| Merge a PR with conflicts you don't understand | You might throw away a teammate's work. Ask first. |
+| Commit code that doesn't run | It breaks the app for everyone once it reaches `main`. |
+| Change a teammate's files without telling them | Leads to conflicts and lost work. |
+
+> 🚨 **Committed something by mistake (a password, key or real data)?** Tell Tony **right away**, even if you already deleted it. Then **change that password or cancel that key immediately**, because it stays visible in the history. Don't try to fix it with force pushes.
 
 ### Troubleshooting
 
@@ -167,14 +238,17 @@ Run these from the project folder (`healthtrajectory`). If your terminal is insi
 | **Blank white page** at `127.0.0.1:5500` | You used Live Server. Stop it (click **Port: 5500** at the bottom of VS Code) and use `npm run dev` with **http://localhost:5173** instead. |
 | **Blank page** at `localhost:5173` | Make sure the `npm run dev` terminal is still running. Press **Cmd + Shift + R** to hard-refresh. Still blank? Press **Cmd + Option + J** (Chrome) to see errors and send them to the team. |
 | `npm: command not found` / `'npm' is not recognized` | Node.js isn't installed, or VS Code was open while you installed it. Install the LTS version from nodejs.org and **restart VS Code**. |
+| `npm.ps1 cannot be loaded because running scripts is disabled on this system` (Windows) | Run `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned` in the VS Code terminal and type **Y** if asked. Or switch the terminal to Command Prompt: **Ctrl + Shift + P** → **Terminal: Select Default Profile** → **Command Prompt**, then open a new terminal. |
 | `npm error enoent ... package.json` | You're in the wrong folder. Run `cd capstone` first. |
 | `Port 5173 is in use` | The app is already running in another terminal. Use that one, or stop it with **Control + C**. |
 | `git: command not found` | Git isn't installed. See Part 1, then restart VS Code. |
 | `Need to specify how to reconcile divergent branches` | Run `git config --global pull.rebase false`, then `git pull` again. |
-| `Please tell me who you are` | Run the two `git config` lines in Part 1. |
+| `Please tell me who you are` | Run the `git config` lines in Part 1. |
+| `protected branch` / `GH006` / `Changes must be made through a pull request` when pushing | You're on `main`. Click the branch name at the bottom-left of VS Code → choose your branch. To move uncommitted changes, just switch (they come with you). If you already committed on `main`, ask Tony for help. |
+| Your branch isn't in the list when switching | Your copy doesn't know about it yet. Press **Cmd + Shift + P** → **Git: Fetch**, then try again. |
+| `rejected ... fetch first` / `Updates were rejected` | Someone (or you, from another computer) pushed to your branch first. Run `git pull`, then `git push` again. |
 | `Permission denied` / `403` when pushing | Either you haven't **accepted** the collaborator invite (check your email or github.com/notifications), or VS Code isn't signed in to GitHub (click the **person icon** at the bottom-left → sign in with GitHub). |
-| `rejected ... fetch first` / `Updates were rejected` | Someone pushed before you. Run `git pull`, then `git push` again. |
 | A screen ending with `(END)` or `:` that won't go away | Press **q**. To stop it happening, run `git config --global core.pager cat`. |
 | A text editor opens saying **"Please enter a commit message"** or **MERGE_MSG** | Git is confirming a pull. Just close that editor tab; if asked, save it. In a terminal editor (vim), type `:wq` and press Enter. |
-| **Merge conflict** (files marked **C** or `<<<<<<<` in the code) | You and a teammate changed the same lines. Open the file; VS Code shows **Accept Current Change** (yours), **Accept Incoming Change** (theirs) or **Accept Both**. Pick the right one, save, then commit and push. If you're unsure, ask the teammate who made the other change before choosing. |
+| **Merge conflict** (files marked **C** or `<<<<<<<` in the code) | You and a teammate changed the same lines. Open the file; VS Code shows **Accept Current Change** (yours), **Accept Incoming Change** (theirs) or **Accept Both**. Pick the right one, save, then commit and push. This usually happens after `git pull origin main`. If you're unsure, ask the teammate who made the other change before choosing. |
 | Everything is a mess and you just want a fresh copy | Rename your old project folder (so nothing is lost), then do **Part 2** again. |

@@ -3,7 +3,7 @@
 A React + TypeScript front end for manually tracking lab results over time. No AI and no EHR/FHIR integration in this version. All data is entered by the user.
 
 ```bash
-cd web
+cd capstone
 npm install
 npm run dev        # http://localhost:5173
 npm test           # range parsing, status and trend logic

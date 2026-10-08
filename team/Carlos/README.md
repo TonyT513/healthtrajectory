@@ -1,10 +1,12 @@
-# Carlos's guide
+# Carlos's folder
 
 Your branch: **`carlos-branch`**
 
-This is your personal copy of the team workflow. It's the same as the [beginner's guide in the main README](../../README.md#beginners-guide-visual-studio-code), with your branch filled in.
+This folder is yours. It holds this guide and [`journal.md`](journal.md), your work log. Add anything else you like here (notes, research, screenshots). Only you edit files in `team/Carlos/`, so they never conflict with anyone else's.
 
-> ⚠️ **Before your first commit, read [What NOT to commit](../../README.md#what-not-to-commit).** The repo is public. Never commit passwords, API keys, `.env` files, real health information or personal information. Deleting it later doesn't remove it from the history.
+This guide is your personal copy of the team workflow. It's the same as the [beginner's guide in the main README](../../README.md#beginners-guide-visual-studio-code), with your branch filled in.
+
+> ⚠️ **Before your first commit, read the [Dos and don'ts](../../README.md#dos-and-donts).** The repo is public. Never commit passwords, API keys, `.env` files, real health information or personal information. Deleting it later doesn't remove it from the history.
 
 ## One-time setup
 
@@ -54,11 +56,16 @@ Open **http://localhost:5173**. Don't use "Go Live" / Live Server; it shows a bl
 6. ❗ **Don't click "Delete branch"** afterwards. `carlos-branch` is your permanent workspace.
 7. Tell the group chat: "Merged my PR, please run `git pull origin main`."
 
+## Your journal
+
+Open [`journal.md`](journal.md), copy the template into a new dated entry (newest at the top), then commit and push it like any other change. It reaches `main` the next time you merge a pull request. A short entry after each work session is enough.
+
 ## Quick rules
 
 - ✅ Work only on **`carlos-branch`**. Never on `main`.
 - ✅ Run `git pull origin main` at the start of every session.
 - ✅ Say in the group chat which page or file you're working on.
+- ✅ Keep your notes and journal in `team/Carlos/`. Don't edit other people's folders.
 - ❌ No passwords, keys, `.env` files, real health data or personal info.
 - ❌ No `git push --force`. Don't delete branches.
 - 🚨 Committed a secret by mistake? Tell Tony right away and change that password or key.

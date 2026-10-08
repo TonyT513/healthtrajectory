@@ -68,7 +68,7 @@ Capstone Team B. Everyone works on **their own branch** and moves finished work 
 | Rob | `rob-branch` | [docs/team/rob.md](docs/team/rob.md) |
 | Carlos | `carlos-branch` | [docs/team/carlos.md](docs/team/carlos.md) |
 
-> 🔒 **`main` is protected.** Nobody (Tony included) can push to it directly. Changes reach `main` only through a pull request. This stops anyone from accidentally overwriting someone else's work.
+> 🔒 **`main` is protected.** Teammates can't push to it directly, and everyone (Tony included) moves work into `main` through a pull request. This stops anyone from accidentally overwriting someone else's work.
 
 > ⚠️ **Read [What NOT to commit](#what-not-to-commit) before your first commit.** This repo is **public**: anything you push can be seen by anyone on the internet, and it stays in the history even after you delete it.
 

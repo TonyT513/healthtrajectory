@@ -55,6 +55,7 @@ React · TypeScript · Vite · React Router
 | [`capstone/`](capstone/) | The web app ([technical README](capstone/README.md)) |
 | [`capstone/src/lib/analysis.ts`](capstone/src/lib/analysis.ts) | How status and trends are calculated |
 | [`capstone/docs/reference-ranges.md`](capstone/docs/reference-ranges.md) | Sources for typical ranges |
+| [`docs/Team_B_Project_Plan.xlsx`](docs/Team_B_Project_Plan.xlsx) | Project plan: every task, who owns it, dates and dependencies |
 | [`team/`](team/) | A folder for each team member: their personal guide (`README.md`) and their journal (`journal.md`) |
 
 ## Team

@@ -68,6 +68,6 @@ Open [`journal.md`](journal.md), copy the template into a new dated entry (newes
 - ✅ Keep your notes and journal in `team/Jared/`. Don't edit other people's folders.
 - ❌ No passwords, keys, `.env` files, real health data or personal info.
 - ❌ No `git push --force`. Don't delete branches.
-- 🚨 Committed a secret by mistake? Tell Tony right away and change that password or key.
+- 🔑 Secrets (passwords, API keys) go in a `.env` file, which Git ignores. Commit only a `.env.example` with fake values, and share real values privately. See [Where secrets go instead](../../README.md#where-secrets-go-instead).
 
 Stuck? See [Troubleshooting](../../README.md#troubleshooting) or send a screenshot of the error to the group.

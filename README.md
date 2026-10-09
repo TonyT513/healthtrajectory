@@ -228,7 +228,7 @@ This repository is **public**. Everything you push can be seen by anyone, and **
 
 | ❌ Don't commit | Why |
 |---|---|
-| **Passwords, API keys, tokens, connection strings**, or any `.env` file | Anyone can copy and misuse them. Bots scan GitHub for keys within minutes. |
+| **Passwords, API keys, tokens, connection strings**, or any `.env` file | Anyone can copy and misuse them. Bots scan GitHub for keys within minutes. See [Where secrets go instead](#where-secrets-go-instead). |
 | **Real health information**: anyone's real lab results, medications, diagnoses, or screenshots of real data | Private medical information. Use only the app's **made-up example data**. |
 | **Personal information**: SSNs, student IDs, home addresses, phone numbers, birthdates | Public forever, even after deletion. |
 | **`node_modules/`, `dist/`** | Huge, and anyone can recreate them with `npm install` / `npm run build`. (Already blocked by `.gitignore`.) |
@@ -247,7 +247,18 @@ This repository is **public**. Everything you push can be seen by anyone, and **
 | Commit code that doesn't run | It breaks the app for everyone once it reaches `main`. |
 | Edit files in someone else's `team/` folder, or change their code without telling them | Leads to conflicts and lost work. |
 
-> 🚨 **Committed something by mistake (a password, key or real data)?** Tell Tony **right away**, even if you already deleted it. Then **change that password or cancel that key immediately**, because it stays visible in the history. Don't try to fix it with force pushes.
+### Where secrets go instead
+
+You'll eventually need things like a database password or an API key. Here's how to handle them without ever putting them in the repo:
+
+| ✅ Do this | Why |
+|---|---|
+| **Put secrets in a file named `.env`** (inside `capstone/`, or wherever the code that needs them lives) | `.gitignore` already blocks every `.env` file, so Git won't upload it even if you run `git add .`. |
+| **Commit a `.env.example`** with the same names but fake values, e.g. `DB_PASSWORD=your-password-here` | Teammates can see which settings they need without seeing the real values. They copy it to `.env` and fill in their own. |
+| **Read the value in code by its name**, never type the actual value into a code file | The code can be public; the value stays on your computer. |
+| **Share real secrets privately**: a direct message, in person, or a password manager | Not in the group chat history, not in a journal, not in a GitHub issue or pull request. |
+| **Keep real secrets on a server, never in the browser app.** When the back end exists, the database password lives only there. When deploying, enter secrets in the host's settings (e.g. Vercel → Project → Settings → **Environment Variables**). | Anything the browser app uses can be read by anyone who opens the website, even if it came from `.env`. |
+| **Check the changed-files list before committing** | If you ever see a file named `.env` (without `.example`) there, stop: something is wrong. |
 
 ### Troubleshooting
 

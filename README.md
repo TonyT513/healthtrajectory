@@ -62,12 +62,12 @@ React · TypeScript · Vite · React Router
 
 Capstone Team B. Everyone works on **their own branch** and moves finished work into `main` with a pull request.
 
-| Member | Your branch | Your folder (guide + journal) |
-|---|---|---|
-| Tony | `tony-branch` | [`team/Tony/`](team/Tony/) |
-| Jared | `jared-branch` | [`team/Jared/`](team/Jared/) |
-| Rob | `rob-branch` | [`team/Rob/`](team/Rob/) |
-| Carlos | `carlos-branch` | [`team/Carlos/`](team/Carlos/) |
+| Member | GitHub | Your branch | Your folder (guide + journal) |
+|---|---|---|---|
+| Tony | [@TonyT513](https://github.com/TonyT513) | `tony-branch` | [`team/Tony/`](team/Tony/) |
+| Jared | [@jwerwa](https://github.com/jwerwa) | `jared-branch` | [`team/Jared/`](team/Jared/) |
+| Rob | [@firorrt](https://github.com/firorrt) | `rob-branch` | [`team/Rob/`](team/Rob/) |
+| Carlos | [@CarG05](https://github.com/CarG05) | `carlos-branch` | [`team/Carlos/`](team/Carlos/) |
 
 Each person's folder has a **`README.md`** (your personal step-by-step guide, with your branch filled in) and a **`journal.md`** where you can log what you worked on. Only edit files in **your own** folder, so nobody's journal ever conflicts with anyone else's. You can add more files there too (notes, screenshots, research).
 

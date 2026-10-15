@@ -1,0 +1,8 @@
+# Normalize line endings so Windows and Mac edits do not show whole-file changes
+* text=auto
+
+# Binary files
+*.png binary
+*.jpg binary
+*.xlsx binary
+*.pdf binary

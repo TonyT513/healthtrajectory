@@ -81,21 +81,23 @@ Each person's folder has a **`README.md`** (your personal step-by-step guide, wi
 
 Never used Git, GitHub or VS Code before? Start here. You only do **Part 1** and **Part 2** once. **Part 3** and **Part 4** are what you do every time you work on the project. Your [personal guide](#team) has the same steps with your branch name filled in.
 
-> **Mac or Windows?** Where this guide says **Cmd**, Windows users press **Ctrl**. Where it says **Option**, Windows users press **Alt**.
+> 🪟 **This guide is written for Windows** (Carlos, Jared and Rob). Tony is on a Mac: where it says **Ctrl**, press **Cmd** instead (except **Ctrl + C** to stop the app, which is the same on Mac). Mac-only differences are marked **Mac:**.
 
 ### Part 1: Install the tools (one time)
 
 | Step | What to do |
 |---|---|
 | 1. **GitHub account** | Sign up at [github.com](https://github.com) if you don't have one. Send your username to Tony so Tony can add you to the project. You **can't push changes** until you're added (see the box below). |
-| 2. **VS Code** | Download from [code.visualstudio.com](https://code.visualstudio.com) and install it. |
-| 3. **Git** | **Mac:** open the **Terminal** app, type `git --version` and press Enter. If it asks to install "command line developer tools", click **Install**. **Windows:** download from [git-scm.com](https://git-scm.com) and install with all the default options. |
-| 4. **Node.js** | Download the **LTS** version from [nodejs.org](https://nodejs.org) and install it. This is what runs the app. |
-| 5. **Restart VS Code** | Close VS Code completely and reopen it so it can find Git and Node. |
+| 2. **VS Code** | Go to [code.visualstudio.com](https://code.visualstudio.com) → **Download for Windows**. Run the installer and keep the default options (**"Add to PATH"** must stay checked). |
+| 3. **Git** | Go to [git-scm.com](https://git-scm.com) → **Download for Windows** → **Click here to download** (64-bit). Run the installer and click **Next** through every screen, **except one**: on **"Choosing the default editor used by Git"**, pick **Use Visual Studio Code as Git's default editor**. This stops a confusing black text editor from appearing later. Leave **Git Credential Manager** selected; it's how you sign in to GitHub. **Mac:** open **Terminal**, type `git --version`, and click **Install** if asked. |
+| 4. **Node.js** | Go to [nodejs.org](https://nodejs.org) → download the **LTS** version (**Windows Installer, .msi**). Run it with the default options. On the **"Tools for Native Modules"** screen, leave the box **unchecked**; this project doesn't need it. Node is what runs the app. |
+| 5. **Restart your computer** | So Windows finds Git and Node everywhere. (Skipping this is the #1 cause of `'npm' is not recognized`.) |
+| 6. **Allow npm to run** (one time) | Open VS Code → **Terminal → New Terminal**. Paste `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`, press **Enter**, then type **Y** and **Enter** if asked. Without this, Windows blocks `npm` with *"running scripts is disabled on this system"*. **Mac:** skip this step. |
+| 7. **Check it worked** | In the same terminal, run `git --version`, then `node --version`, then `npm --version`. Each should print a version number. If one says *"is not recognized"*, see [Troubleshooting](#troubleshooting). |
 
 > **Tony — adding a teammate:** on GitHub, open this repo → **Settings** → **Collaborators** → **Add people** → type their username. They'll get an email invite they have to **accept**.
 
-**Tell Git who you are** (one time). In VS Code, open the menu **Terminal → New Terminal**. Type these four lines, pressing Enter after each. Put your own name, and the **same email you used for GitHub**, in the first two:
+**Tell Git who you are** (one time). In the VS Code terminal (**Terminal → New Terminal**), Type these four lines, pressing Enter after each. Put your own name, and the **same email you used for GitHub**, in the first two:
 
 ```bash
 git config --global user.name "Your Name"
@@ -109,10 +111,12 @@ The last two lines prevent two confusing messages later (see Troubleshooting). N
 ### Part 2: Get the project onto your computer ("clone") (one time)
 
 1. Open VS Code. If a project is already open, close it with **File → Close Folder**.
-2. Press **Cmd + Shift + P**, type **Git: Clone**, and press Enter.
-3. Choose **Clone from GitHub**. If it asks you to sign in to GitHub, click **Allow** and finish signing in in your browser.
+2. Press **Ctrl + Shift + P**, type **Git: Clone**, and press Enter.
+3. Choose **Clone from GitHub**. If it asks you to sign in to GitHub, click **Allow**, then **Authorize** in the browser window that opens, and return to VS Code.
 4. Choose **TonyT513/healthtrajectory**. (Or paste `https://github.com/TonyT513/healthtrajectory.git`.)
-5. Pick a folder to save it in, such as **Documents**. Avoid saving it inside OneDrive or iCloud folders.
+5. Pick a folder to save it in. On Windows, **make a new folder `C:\Users\YourName\Projects`** and choose that.
+   - ⚠️ **Don't** pick **Documents** or **Desktop** if they're synced to **OneDrive** (the path contains `OneDrive`, or files show cloud icons). OneDrive locks files while it syncs, which breaks `npm install` with `EPERM` errors.
+   - **Mac:** any folder outside iCloud Drive, e.g. a `Projects` folder in your home folder.
 6. When VS Code asks **"Would you like to open the cloned repository?"**, click **Open**.
 7. If it asks **"Do you trust the authors?"**, click **Yes, I trust the authors**.
 
@@ -134,10 +138,10 @@ You should now see `capstone`, `docs` and `README.md` in the **Explorer** panel 
    - `cd capstone` moves into the app's folder. You must do this first.
    - `npm install` downloads the libraries the app needs. It takes a minute and you only need it the first time, or after someone adds a new library. Yellow "warn" messages are normal.
    - `npm run dev` starts the app. **Leave this terminal running** while you use the app.
-3. When you see `Local: http://localhost:5173/`, hold **Cmd** and click that link, or type it into your browser.
+3. When you see `Local: http://localhost:5173/`, hold **Ctrl** and click that link, or type it into Chrome or Edge.
 4. Click **Create an account** (it's only saved on your computer), then **Load example data** to see the app filled in.
 5. While it's running, any code you save shows up in the browser automatically.
-6. To **stop** the app: click in the terminal and press **Control + C** (on Mac too, it's the Control key, not Cmd).
+6. To **stop** the app: click in the terminal and press **Ctrl + C**. If it asks *"Terminate batch job (Y/N)?"*, type **Y** and press Enter. (**Mac:** also **Control + C**, not Cmd.)
 
 Next time, you only need `cd capstone` and `npm run dev`.
 
@@ -164,7 +168,7 @@ carlos-branch ──┘
    git pull origin main
    ```
    This brings everything new from `main` into your branch. If it opens an editor with a message, just close that tab.
-3. **Make your changes** and save (**Cmd + S**). Test them in the app (Part 3).
+3. **Make your changes** and save (**Ctrl + S**). Test them in the app (Part 3).
 4. **Commit.** Click the **Source Control** icon on the left (three dots joined by lines). **Look at the list of changed files first** and make sure every file belongs there (see [Dos and don'ts](#dos-and-donts)). Type a short message like `Add sleep goal to Goals page` and click **✓ Commit**.
    - If it asks *"There are no staged changes… stage all your changes?"*, click **Yes**.
 5. **Push.** Click **Sync Changes** (or **Publish Branch** the first time). Your work is now backed up on GitHub, on your branch only.
@@ -263,22 +267,36 @@ You'll eventually need things like a database password or an API key. Here's how
 
 ### Troubleshooting
 
+Written for **Windows**. **Mac** differences are noted where they matter.
+
+**Running the app**
+
 | What you see | What to do |
 |---|---|
-| **Blank white page** at `127.0.0.1:5500` | You used Live Server. Stop it (click **Port: 5500** at the bottom of VS Code) and use `npm run dev` with **http://localhost:5173** instead. |
-| **Blank page** at `localhost:5173` | Make sure the `npm run dev` terminal is still running. Press **Cmd + Shift + R** to hard-refresh. Still blank? Press **Cmd + Option + J** (Chrome) to see errors and send them to the team. |
-| `npm: command not found` / `'npm' is not recognized` | Node.js isn't installed, or VS Code was open while you installed it. Install the LTS version from nodejs.org and **restart VS Code**. |
-| `npm.ps1 cannot be loaded because running scripts is disabled on this system` (Windows) | Run `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned` in the VS Code terminal and type **Y** if asked. Or switch the terminal to Command Prompt: **Ctrl + Shift + P** → **Terminal: Select Default Profile** → **Command Prompt**, then open a new terminal. |
-| `npm error enoent ... package.json` | You're in the wrong folder. Run `cd capstone` first. |
-| `Port 5173 is in use` | The app is already running in another terminal. Use that one, or stop it with **Control + C**. |
-| `git: command not found` | Git isn't installed. See Part 1, then restart VS Code. |
+| **Blank white page** at `127.0.0.1:5500` | You used Live Server ("Go Live"). Stop it by clicking **Port: 5500** at the bottom of VS Code, then use `npm run dev` and **http://localhost:5173** instead. |
+| **Blank page** at `localhost:5173` | Make sure the `npm run dev` terminal is still running. Press **Ctrl + F5** to hard-refresh. Still blank? Press **F12** → **Console** tab (Chrome or Edge), screenshot any red text and send it to the team. **Mac:** Cmd + Shift + R, then Cmd + Option + J. |
+| `npm.ps1 cannot be loaded because running scripts is disabled on this system` | Run `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned` in the VS Code terminal and type **Y**. (Part 1, step 6.) Or use Command Prompt instead: **Ctrl + Shift + P** → **Terminal: Select Default Profile** → **Command Prompt**, then open a new terminal. |
+| `'npm' is not recognized as the name of a cmdlet...` or `'node' is not recognized` (**Mac:** `command not found`) | Node.js isn't installed, or the terminal was opened before you installed it. **Close every VS Code window** and reopen. Still failing? Restart the computer. Still failing? Reinstall Node.js (LTS) from nodejs.org. |
+| `npm error code EPERM` / `EBUSY` / `operation not permitted` during `npm install` | Something is locking files. Stop the app (**Ctrl + C**), close other VS Code windows, and run `npm install` again. If your project is inside **OneDrive**, that's the cause: clone it again into `C:\Users\YourName\Projects` (Part 2). Antivirus scanning can also do this; just retry. |
+| `npm error enoent ... package.json` / `Could not read package.json` | You're in the wrong folder. Run `cd capstone` first. |
+| `Port 5173 is in use` | The app is already running in another terminal. Use that one, or close extra terminals with the 🗑️ icon and run `npm run dev` again. |
+| `Terminate batch job (Y/N)?` | You pressed Ctrl + C to stop the app. Type **Y** and press Enter. |
+
+**Git and GitHub**
+
+| What you see | What to do |
+|---|---|
+| `'git' is not recognized...` | Git isn't installed or the terminal is older than the install. Install Git (Part 1), **close every VS Code window**, and reopen. |
+| A **"Git Credential Manager"** or browser window asks you to sign in | Normal the first time. Choose **Sign in with your browser** → **Authorize**. |
+| `Permission denied` / `403` / `remote: Write access to repository not granted` | (1) You haven't **accepted** the collaborator invite: check your email or github.com/TonyT513/healthtrajectory/invitations. (2) Windows saved the wrong GitHub account: open **Start** → type **Credential Manager** → **Windows Credentials** → find `git:https://github.com` → **Remove**. The next push asks you to sign in again. |
+| `protected branch` / `GH006` / `Changes must be made through a pull request` | You're on `main`. Click the branch name at the bottom-left of VS Code → choose your branch. Uncommitted changes come with you when you switch. If you already committed on `main`, ask Tony for help. |
+| Your branch isn't in the list when switching | Your copy doesn't know about it yet. **Ctrl + Shift + P** → **Git: Fetch**, then try again. |
+| `rejected ... fetch first` / `Updates were rejected` | Your branch on GitHub has commits you don't have (e.g. from another computer). Run `git pull`, then `git push` again. |
 | `Need to specify how to reconcile divergent branches` | Run `git config --global pull.rebase false`, then `git pull` again. |
 | `Please tell me who you are` | Run the `git config` lines in Part 1. |
-| `protected branch` / `GH006` / `Changes must be made through a pull request` when pushing | You're on `main`. Click the branch name at the bottom-left of VS Code → choose your branch. To move uncommitted changes, just switch (they come with you). If you already committed on `main`, ask Tony for help. |
-| Your branch isn't in the list when switching | Your copy doesn't know about it yet. Press **Cmd + Shift + P** → **Git: Fetch**, then try again. |
-| `rejected ... fetch first` / `Updates were rejected` | Someone (or you, from another computer) pushed to your branch first. Run `git pull`, then `git push` again. |
-| `Permission denied` / `403` when pushing | Either you haven't **accepted** the collaborator invite (check your email or github.com/notifications), or VS Code isn't signed in to GitHub (click the **person icon** at the bottom-left → sign in with GitHub). |
 | A screen ending with `(END)` or `:` that won't go away | Press **q**. To stop it happening, run `git config --global core.pager cat`. |
-| A text editor opens saying **"Please enter a commit message"** or **MERGE_MSG** | Git is confirming a pull. Just close that editor tab; if asked, save it. In a terminal editor (vim), type `:wq` and press Enter. |
-| **Merge conflict** (files marked **C** or `<<<<<<<` in the code) | You and a teammate changed the same lines. Open the file; VS Code shows **Accept Current Change** (yours), **Accept Incoming Change** (theirs) or **Accept Both**. Pick the right one, save, then commit and push. This usually happens after `git pull origin main`. If you're unsure, ask the teammate who made the other change before choosing. |
+| A **MERGE_MSG** or **COMMIT_EDITMSG** tab opens in VS Code | Git is confirming a pull or merge. Just **close the tab**; the message is already filled in. If instead a black screen with `~` down the side appears (the "vim" editor), type `:wq` and press **Enter**. |
+| `Filename too long` | Run `git config --global core.longpaths true`, then try again. |
+| **Every line** of a file shows as changed, though you edited one line | A Windows line-ending mix-up. Don't commit it. Right-click the file in Source Control → **Discard Changes** only if you made no real edits; otherwise ask Tony. |
+| **Merge conflict** (files marked **C** or `<<<<<<<` in the code) | You and a teammate changed the same lines, usually after `git pull origin main`. Open the file; VS Code shows **Accept Current Change** (yours), **Accept Incoming Change** (theirs) or **Accept Both**. Pick the right one, save, then commit and push. Unsure? Ask the teammate who made the other change first. |
 | Everything is a mess and you just want a fresh copy | Rename your old project folder (so nothing is lost), then do **Part 2** again. |

@@ -11,16 +11,15 @@ This guide is your personal copy of the team workflow. It's the same as the [beg
 ## One-time setup
 
 1. You're the repo owner, so you don't need an invite. `main` is protected for you too, so you follow the same branch → pull request routine as everyone else.
-2. Install **VS Code**, **Git** and **Node.js (LTS)**, then restart your computer. Links are in [Part 1 of the main guide](../../README.md#part-1-install-the-tools-one-time).
-3. In VS Code, open **Terminal → New Terminal** and run these, one line at a time. Use the **same email as your GitHub account**:
+2. You're on a **Mac**: Git, VS Code and Node.js (LTS) are already set up from earlier. Your teammates' guides are written for Windows; the main README marks Mac differences with **Mac:**.
+3. Your Git name, email and pager setting are already set. Run `git config --global pull.rebase false` once if you haven't yet. On a new Mac, run all of these:
    ```bash
    git config --global user.name "Tony"
    git config --global user.email "your-github-email@example.com"
    git config --global pull.rebase false
    git config --global core.pager cat
    ```
-   *Windows: if `npm` later says "running scripts is disabled", run `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned` once and type **Y**.*
-4. **Clone the project:** **Ctrl/Cmd + Shift + P** → **Git: Clone** → **Clone from GitHub** → **TonyT513/healthtrajectory** → save in **Documents** → **Open**.
+4. **Already cloned?** Skip this. Otherwise: **Cmd + Shift + P** → **Git: Clone** → **Clone from GitHub** → **TonyT513/healthtrajectory** → a folder outside iCloud Drive → **Open**.
 5. **Switch to your branch:** click **`main`** in the **bottom-left corner** of VS Code → choose **`origin/tony-branch`**. The bottom-left should now say **`tony-branch`**. ✅
 
 ## Run the app
@@ -31,7 +30,7 @@ npm install      # first time only
 npm run dev
 ```
 
-Open **http://localhost:5173**. Don't use "Go Live" / Live Server; it shows a blank page. Stop the app with **Control + C** in the terminal.
+Open **http://localhost:5173**. Don't use "Go Live" / Live Server; it shows a blank page. Stop the app with **Control + C** in the terminal (Control, not Cmd).
 
 ## Every work session
 
@@ -40,7 +39,7 @@ Open **http://localhost:5173**. Don't use "Go Live" / Live Server; it shows a bl
    ```bash
    git pull origin main
    ```
-3. Make your changes, save, and test them in the app.
+3. Make your changes, save (**Cmd + S**), and test them in the app.
 4. **Source Control** (left sidebar) → **read the list of changed files** → type a message → **✓ Commit**.
 5. Click **Sync Changes** (or **Publish Branch** the first time).
 

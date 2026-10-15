@@ -11,16 +11,18 @@ This guide is your personal copy of the team workflow. It's the same as the [beg
 ## One-time setup
 
 1. **Accept the GitHub invite.** Check your email for an invite to `TonyT513/healthtrajectory` (or visit github.com/TonyT513/healthtrajectory/invitations) and click **Accept**. Invites expire after 7 days.
-2. Install **VS Code**, **Git** and **Node.js (LTS)**, then restart your computer. Links are in [Part 1 of the main guide](../../README.md#part-1-install-the-tools-one-time).
-3. In VS Code, open **Terminal → New Terminal** and run these, one line at a time. Use the **same email as your GitHub account**:
-   ```bash
+2. Install **VS Code**, **Git** and **Node.js (LTS)** for **Windows**, then **restart your computer**. Follow [Part 1 of the main guide](../../README.md#part-1-install-the-tools-one-time) step by step. Two things matter most:
+   - In the Git installer, choose **Use Visual Studio Code as Git's default editor**.
+   - In the Node.js installer, leave **"Tools for Native Modules"** unchecked.
+3. In VS Code, open **Terminal → New Terminal** and run these, one line at a time. Use the **same email as your GitHub account**. The first line lets Windows run `npm` (type **Y** if asked):
+   ```powershell
+   Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
    git config --global user.name "Carlos"
    git config --global user.email "your-github-email@example.com"
    git config --global pull.rebase false
    git config --global core.pager cat
    ```
-   *Windows: if `npm` later says "running scripts is disabled", run `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned` once and type **Y**.*
-4. **Clone the project:** **Ctrl/Cmd + Shift + P** → **Git: Clone** → **Clone from GitHub** → **TonyT513/healthtrajectory** → save in **Documents** → **Open**.
+4. **Clone the project:** make a folder `C:\Users\YourName\Projects` (not inside OneDrive). In VS Code press **Ctrl + Shift + P** → **Git: Clone** → **Clone from GitHub** → **TonyT513/healthtrajectory** → choose your `Projects` folder → **Open**.
 5. **Switch to your branch:** click **`main`** in the **bottom-left corner** of VS Code → choose **`origin/carlos-branch`**. The bottom-left should now say **`carlos-branch`**. ✅
 
 ## Run the app
@@ -31,7 +33,7 @@ npm install      # first time only
 npm run dev
 ```
 
-Open **http://localhost:5173**. Don't use "Go Live" / Live Server; it shows a blank page. Stop the app with **Control + C** in the terminal.
+Open **http://localhost:5173** in Chrome or Edge. Don't use "Go Live" / Live Server; it shows a blank page. Stop the app with **Ctrl + C** in the terminal (type **Y** if asked *"Terminate batch job?"*).
 
 ## Every work session
 
@@ -40,7 +42,7 @@ Open **http://localhost:5173**. Don't use "Go Live" / Live Server; it shows a bl
    ```bash
    git pull origin main
    ```
-3. Make your changes, save, and test them in the app.
+3. Make your changes, save (**Ctrl + S**), and test them in the app.
 4. **Source Control** (left sidebar) → **read the list of changed files** → type a message → **✓ Commit**.
 5. Click **Sync Changes** (or **Publish Branch** the first time).
 
@@ -70,4 +72,4 @@ Open [`journal.md`](journal.md), copy the template into a new dated entry (newes
 - ❌ No `git push --force`. Don't delete branches.
 - 🔑 Secrets (passwords, API keys) go in a `.env` file, which Git ignores. Commit only a `.env.example` with fake values, and share real values privately. See [Where secrets go instead](../../README.md#where-secrets-go-instead).
 
-Stuck? See [Troubleshooting](../../README.md#troubleshooting) or send a screenshot of the error to the group.
+Stuck? See [Troubleshooting](../../README.md#troubleshooting) (written for Windows) or send a screenshot of the error to the group.
